@@ -1,0 +1,24 @@
+From 240aa9082b1a6b7979ee67855be2c9a0cc9054ea Mon Sep 17 00:00:00 2001
+From: AJ Christensen <aj@junglist.io>
+Date: Wed, 10 Jul 2013 12:15:45 +1200
+Subject: [PATCH 2/2] [libscribe] shared object fixes: need a few other files
+
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 969775a..6b73b56 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -92,7 +92,7 @@ endif
+ if SHARED
+ shareddir = $(prefix)/lib
+ shared_PROGRAMS = libscribe.so
+-libscribe_so_SOURCES = gen-cpp/scribe.cpp gen-cpp/scribe_types.cpp
++libscribe_so_SOURCES = gen-cpp/scribe.cpp gen-cpp/scribe_types.cpp gen-cpp/BucketStoreMapping.cpp gen-cpp/bucketupdater_constants.cpp gen-cpp/bucketupdater_types.cpp
+ libscribe_so_CXXFLAGS = $(SHARED_CXXFLAGS)
+ libscribe_so_LDFLAGS = $(SHARED_LDFLAGS)
+ INTERNAL_LIBS =  libscribe.so
+--
+1.8.3.2

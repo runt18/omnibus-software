@@ -1,0 +1,25 @@
+From ee0344601804a733772090bcccd02a4f5b252712 Mon Sep 17 00:00:00 2001
+From: AJ Christensen <aj@junglist.gen.nz>
+Date: Tue, 9 Jul 2013 18:13:15 +1200
+Subject: [PATCH] Use fPIC
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 9754ddf..4c735c3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -21,7 +21,7 @@ RANLIB=ranlib
+ LDFLAGS=
+ 
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS=-Wall -Winline -O2 -g $(BIGFILES) -fPIC
+ 
+ # Where you want it installed when you do 'make install'
+ PREFIX=/usr/local
+-- 
+1.8.3.2
+
