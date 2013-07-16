@@ -12,7 +12,7 @@ embedded = File.join(install_dir, 'embedded')
 lib_dir = File.join(embedded, 'lib')
 include_dir = File.join(embedded, 'include')
 
-env(
+env = (
   'LDFLAGS' => "-L#{lib_dir} -I#{include_dir}",
   'CFLAGS' => "-L#{lib_dir} -I#{include_dir}",
   'LD_RUN_PATH' => lib_dir,
