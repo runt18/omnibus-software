@@ -6,7 +6,7 @@ dependency 'icu'
 dependency 'python'
 
 source(
-  url: 'http://downloads.sourceforge.net/project/boost/boost/1.46.1/boost_1_46_1.tar.bz2?use_mirror=internode',
+  url: 'http://downloads.sourceforge.net/project/boost/boost/1.46.1/boost_1_46_1.tar.bz2?use_mirror=superb-dca2',
   md5: '7375679575f4c8db605d426fc721d506'
 )
 relative_path 'boost_1_46_1'
