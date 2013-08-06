@@ -6,6 +6,7 @@ source(
   md5: '14c97adefb4efc209285f63b4c7f51f2'
 )
 
+dependency 'automake'
 dependency 'thrift'
 
 relative_path File.join(
