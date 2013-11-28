@@ -16,15 +16,15 @@
 #
 
 name "keepalived"
-version "1.1.20"
+version "1.2.9"
 
 dependency "popt"
 dependency "openssl"
 
-source :url => "http://www.keepalived.org/software/keepalived-1.1.20.tar.gz",
-       :md5 => "6c3065c94bb9e2187c4b5a80f6d8be31"
+source :url => "http://www.keepalived.org/software/keepalived-1.2.9.tar.gz",
+       :md5 => "adfad98a2cc34230867d794ebc633492"
 
-relative_path "keepalived-1.1.20"
+relative_path "keepalived-1.2.9"
 
 env = {
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
@@ -33,8 +33,6 @@ env = {
 }
 
 build do
-  patch :source => "keepalived-1.1.20_opscode_unicast.patch"
-  patch :source => "keepalived-1.1.20_opscode_missing_ntohl.patch"
   command "./configure --prefix=#{install_dir}/embedded --disable-iconv", :env => env
   command "make -j #{max_build_jobs}", :env => env
   command "make install"
