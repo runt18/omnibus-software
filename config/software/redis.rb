@@ -1,5 +1,6 @@
 #
 # Copyright:: Copyright (c) 2012 Opscode, Inc.
+# Copyright:: Copyright (c) 2013, MoPub, Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,19 +16,26 @@
 # limitations under the License.
 #
 
-name "redis"
-version "2.8.2"
+name 'redis'
+version '2.6.14'
+source(
+  url: 'http://redis.googlecode.com/files/redis-2.6.14.tar.gz',
+  md5: '02e0c06e953413017ff64862953e2756'
+)
 
-source :url => "http://download.redis.io/releases/redis-#{version}.tar.gz",
-       :md5 => "ee527b0c37e1e2cbceb497f5f6b8112b"
+relative_path [name, version].join('-')
 
-relative_path "redis-#{version}"
+embedded = File.join(install_dir, 'embedded')
+lib_dir = File.join(embedded, 'lib')
+include_dir = File.join(embedded, 'include')
 
-make_args = ["PREFIX=#{install_dir}/embedded",
-             "CFLAGS='-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include'",
-             "LD_RUN_PATH=#{install_dir}/embedded/lib"].join(" ")
+env = {
+  'PREFIX' => embedded,
+  'CFLAGS' => "-L#{lib_dir} -I#{include_dir}",
+  'LD_RUN_PATH' => lib_dir
+}
 
 build do
-  command ["make -j #{max_build_jobs}", make_args].join(" ")
-  command ["make install", make_args].join(" ")
+  command "make -j #{max_build_jobs}", env: env
+  command 'make install', env: env
 end
