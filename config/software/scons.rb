@@ -11,17 +11,18 @@ source(
 embedded = File.join(install_dir, 'embedded')
 lib_dir = File.join(embedded, 'lib')
 include_dir = File.join(embedded, 'include')
+python = File.join(embedded, 'bin', 'python')
 
 env = {
-  'LDFLAGS' => "-L#{lib_dir} -I#{include_dir}",
+  'LDFLAGS' => "-Wl,-rpath,#{lib_dir} -L#{lib_dir} -I#{include_dir}",
   'CFLAGS' => "-L#{lib_dir} -I#{include_dir}",
   'LD_RUN_PATH' => lib_dir,
-  'PYTHON' => File.join(embedded, 'bin', 'python'),
+  'PYTHON' => python,
   'PY_PREFIX' => embedded
 }
 
 relative_path "#{name}-#{version}"
 
 build do
-  command "$PYTHON setup.py --prefix=#{embedded}"
+  command "#{python} setup.py install --prefix=#{embedded}"
 end
