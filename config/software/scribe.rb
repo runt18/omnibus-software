@@ -2,11 +2,12 @@ name 'scribe'
 version '2.2.0.20120106git63e4824'
 
 dependency 'openssl'
-dependency 'python'
 dependency 'boost'
 dependency 'libevent'
+dependency 'scons'
 dependency 'thrift'
 dependency 'fb303'
+dependency 'python'
 
 source(
   url: 'https://github.com/facebook/scribe/tarball/63e4824838bf84e35da6a0817d8a72a6ec0b9fb3/facebook-scribe-63e4824.tar.gz',
